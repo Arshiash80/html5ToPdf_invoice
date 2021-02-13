@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Template</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    
+    <main>
+        <!-- First part of invoice -->
+        <section >
+            <!-- Inoice top header ------------------->
+            <div class="section-header">
+                <h1>LOGO</h1>
+                <p class="pale-text">Duty Of Care / Waste Transfer Note / Receipt</p>
+            </div>
+        
+            <!-- Invoice details --------------------->
+            <div class="invoice-section">
+                <div class="user-detail">
+                   <p>
+                        <span class="header">Waste oil  to be collected from</span>
+                        <!-- Burdaki adresi nasilyazidiricaz?? ----------------------------------------->
+                        <span id="userAdress" class="block-text">
+                            <%= address.restaurantName %> <br>
+                            <%= address.specification %> <br>
+                            <%= address.postcode %> <br>
+                        </span>
+                   </p> 
+                </div>
+                <div class="invoice-detail">
+                    <div class="flex-div">
+                        <ul class="left-side">
+                            <li>Address: <span>----------</span></li>
+                            <li>Company Number: <span>--------</span></li>
+                            <li>Registered Waste Carrier No: <span>------------</span></li>
+                            <li>VAT NO: <span>--------</span></li>
+                        </ul>
+                        <ul class="right-side">
+                            <li>Invoice Date: <span id="invoiceDate"><%= invoice.date %></span></li>
+                            <li>Invoice NO: <span id="invoiceNo"><%= invoice.no %></span></li>
+                        </ul>
+                    </div>
+                    <p class="tel-number bold-text">Tel: ---------</p>
+                </div>
+                <div class="waste-oil-detail">
+                    <div class="waste-oil-code">
+                        <h3>WASTE OIL CODE</h3>
+                        <p><span><%= wasteOil.code %></span></p>
+                    </div>
+                    <div class="liters-of-oil">
+                        <h3>LITERS OF OIL</h3>
+                        <p><span><%= wasteOil.liters %></span></p>
+                    </div>
+                    <div class="total-payment">
+                        <h3>TOTAL PAYMENT</h3>
+                        <p>£<span><%= wasteOil.payment %></span></p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="contract-section">
+                <p class="bold-text">Self-declaration on used cooking oils and fats (UCO) for biofuel production according to the directive 2009/28/EC under ISCC EU</p>
+                <div class="contract-detail">
+                    <p>Only biomass defined as the biodegradable fraction of products, waste and residues from biological origin from agriculter (including vegetal and animal substances), forestry and related industries including fisheries and quaculture, as well as the biodegradable fraction of industrial and municipal waste (Directive 2009/</p>
+                    <p>Please be aware, that animal fat is not considered biomass in some member states, biofuel produced from a feed-stock of animal origin might thus not be eligible to be counted against the biofuel quota in those member state</p>
+                    <p>Vegetable oil which has been used for cooking or frying meat and therefore may be contaminated with animal content does not classify as of animal origin</p>
+    
+                    <p>By signing this self-declaration, the signatory declares that the following requirements are met: 
+                        <span class="block-text">1. The delivery consists entirely of used cooking oil (UCO) and is not mixed with fresh oil.The cooking oil is entirely of vegetable origin</span>
+                        <span class="block-text">2. Documentation of quantities delivered is available.</span> 
+                        <span class="block-text">3. Applicable national legislation regarding waste prevention and management (e.g. transport, supervison etc.) are complied with.</span> 
+                    </p>
+    
+                    <p>Note: By signing this self-declaration, this signatory acknowledges that auditors from certification bodies (may be accompanied by inspectors from authorities with the purpose to evaluate the performance of the certification body) and staff of certification schemes can examine wheter the requirements are met as stated in this self-declaration.</p>
+                </div>
+            </div>
+        </section>  
+        
+        <!-- Seccond part of invoice -->
+        <section>
+            <div class="section-header">
+                <h1>LOGO</h1>
+                <p class="pale-text">Duty Of Care / Waste Transfer Note / Receipt</p>
+            </div>
+            
+            <div class="invoice-section">
+                <div class="user-detail">
+                   <p>
+                        <span class="header"></span>
+                        <!-- Burdaki adresi nasilyazidiricaz?? ----------------------------------------->
+                        <span id="userAdress" class="block-text">
+                            <%= address.restaurantName %> <br>
+                            <%= address.specification %> <br>
+                            <%= address.postcode %> <br>
+                        </span>
+                   </p> 
+                </div>
+                <div class="invoice-detail invoice-relative">
+                    <div class="flex-div">
+                        <ul class="left-side">
+                            <li>Address: <span>-----------</span></li>
+                            <li>Company Number: <span>--------</span></li>
+                            <li>Registered Waste Carrier No: <span>-----------</span></li>
+                            <li>VAT NO: <span>-----------</span></li>
+                        </ul>
+                        <ul class="right-side">
+                            <li>Invoice Date: <span id="invoiceDate"><%= invoice.date %></span></li>
+                            <li>Invoice NO: <span id="invoiceNo"><%= invoice.no %></span></li>
+                        </ul>
+                    </div>
+                    <p class="tel-number bold-text">Tel: -----------</p>
+                </div>
+                <div class="waste-oil-detail">
+                    <div class="waste-oil-code">
+                        <h3>BARREL SIZE</h3>
+                        <% barrelSizesList.forEach(size => { %>
+                        <p><span><%= size %> </span> Lt</p> 
+                        <% }) %>
+                    </div>
+                    
+                    <div class="total-payment">
+                        <h3>PRODUCTS</h3>
+                        <% productsList.forEach(product => { %>
+                            <p><span><%= product %> </span></p> 
+                        <% }) %>
+                    </div>
+                    
+                    <div class="total-payment">
+                        <h3>Qty</h3>
+                        <% qtyList.forEach(qty => { %>
+                            <p><span><%= qty %> </span></p> 
+                        <% }) %>
+                    </div>
+
+                    
+                    <div class="total-payment">
+                        <h3>PRICE</h3>
+                        <% priceList.forEach(price => { %>
+                            <p><span><%= price %> </span></p> 
+                        <% }) %>
+                        <p class="total-price">Total Price: £<span> <%= totalPrice %>  </span></p>
+                    </div>
+                </div>
+
+            </div>
+            
+
+
+            <div class="contract-section">
+                <p class="bold-text">Self-declaration on used cooking oils and fats (UCO) for biofuel production according to the directive 2009/28/EC under ISCC EU</p>
+                <div class="contract-detail">
+                    <p>Only biomass defined as the biodegradable fraction of products, waste and residues from biological origin from agriculter (including vegetal and animal substances), forestry and related industries including fisheries and quaculture, as well as the biodegradable fraction of industrial and municipal waste (Directive 2009/</p>
+                    <p>Please be aware, that animal fat is not considered biomass in some member states, biofuel produced from a feed-stock of animal origin might thus not be eligible to be counted against the biofuel quota in those member state</p>
+                    <p>Vegetable oil which has been used for cooking or frying meat and therefore may be contaminated with animal content does not classify as of animal origin</p>
+    
+                    <p>By signing this self-declaration, the signatory declares that the following requirements are met: 
+                        <span class="block-text">1. The delivery consists entirely of used cooking oil (UCO) and is not mixed with fresh oil.The cooking oil is entirely of vegetable origin</span>
+                        <span class="block-text">2. Documentation of quantities delivered is available.</span> 
+                        <span class="block-text">3. Applicable national legislation regarding waste prevention and management (e.g. transport, supervison etc.) are complied with.</span> 
+                    </p>
+    
+                    <p>Note: By signing this self-declaration, this signatory acknowledges that auditors from certification bodies (may be accompanied by inspectors from authorities with the purpose to evaluate the performance of the certification body) and staff of certification schemes can examine wheter the requirements are met as stated in this self-declaration.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
